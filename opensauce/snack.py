@@ -240,7 +240,7 @@ def snack_raw_pitch_tcl(wav_fn, frame_shift, window_size, max_pitch, min_pitch, 
         in_file = in_file.replace('\\', '\\\\')
 
     # Name of the file containing the Tcl script
-    tcl_file = os.path.join(os.path.dirname(wav_fn), 'tclforsnackpitch.tcl')
+    tcl_file = os.path.join(os.path.dirname(wav_fn), os.path.splitext(os.path.basename(wav_fn))[0]+'tclforsnackpitch.tcl')
 
     # Write Tcl script which will call Snack pitch calculation
     f = open(tcl_file, 'w')
@@ -520,7 +520,7 @@ def snack_raw_formants_tcl(wav_fn, frame_shift, window_size, pre_emphasis, lpc_o
     if sys.platform == 'win32' or sys.platform == 'cygwin': # pragma: no cover
         in_file = in_file.replace('\\', '\\\\')
 
-    tcl_file = os.path.join(os.path.dirname(wav_fn), 'tclforsnackformant.tcl')
+    tcl_file = os.path.join(os.path.dirname(wav_fn), os.path.splitext(os.path.basename(wav_fn))[0]+'tclforsnackformant.tcl')
 
     # Write Tcl script to compute Snack formants
     f = open(tcl_file, 'w')
